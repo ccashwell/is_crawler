@@ -2,8 +2,6 @@
 
 is\_crawler does exactly what you might think it does: determine if the current request is coming from a crawler or bot.
 
-It includes `is_any_crawler?` methods into `ActionController::Base`, so it is always available with any request.
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -20,11 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-You can use the `is_any_crawler?` method to determine if the request came from, as you might have guessed, *any* (noteworthy) crawler, like so:
+You can use the `is_any_crawler?` method to determine if the given string, as you might have guessed, matches *any* (noteworthy) crawler, like so:
 
     class MyController < ActionController::Base
+      include IsCrawler
       def index
-        if is_any_crawler?
+        if is_any_crawler? request.env["HTTP_USER_AGENT"]
           render 'special_crawler_index'
         else
           render 'normal_boring_index'
@@ -32,11 +31,11 @@ You can use the `is_any_crawler?` method to determine if the request came from, 
       end
     end
 
-...or the `is_crawler?(:facebook, :google)` methods to determine if you're dealing with one or more specific crawlers. That's it!
+...or the `is_crawler?("Some User Agent/1.0", :facebook, :google)` methods to determine if you're dealing with one or more specific crawlers. That's it!
 
 ## Contributing
 
-Missing out on a noteworthy crawler? Find a problem? Ideas for improvement? 
+Missing out on a noteworthy crawler? Find a problem? Ideas for improvement?
 
 Raise an issue, or:
 
