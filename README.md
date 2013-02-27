@@ -1,6 +1,7 @@
 # IsCrawler
+[![Code Climate](https://codeclimate.com/github/ccashwell/is_crawler.png)](https://codeclimate.com/github/ccashwell/is_crawler)
 
-is\_crawler does exactly what you might think it does: determine if the current request is coming from a crawler or bot.
+is\_crawler does exactly what you might think it does: determine if the supplied string matches a known crawler or bot.
 
 ## Installation
 

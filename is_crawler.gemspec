@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.version       = IsCrawler::VERSION
   gem.authors       = ["Chris Cashwell"]
   gem.email         = ["ccashwell@gmail.com"]
-  gem.description   = %q{is_crawler does just what you might expect: detect whether the current request is from a crawler.}
+  gem.description   = %q{is_crawler does exactly what you might think it does: determine if the supplied string matches a known crawler or bot.}
   gem.summary       = %q{Simple, effective crawler and bot detection.}
   gem.homepage      = "http://github.com/ccashwell/is_crawler"
 
