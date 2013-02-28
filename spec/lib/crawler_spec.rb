@@ -1,6 +1,6 @@
 describe Crawler do
+  let(:user_agent) { "Commodo Vestibulum/1.0" }
   describe '.matches_any?' do
-    let(:user_agent) { "Commodo Vestibulum/1.0" }
     subject { Crawler.matches_any?(user_agent) }
 
     context 'When an unknown user agent is encountered' do
@@ -20,12 +20,14 @@ describe Crawler do
   describe '#matches?' do
     Crawler.all.each do |crawler|
       describe "Comparing #{crawler.name.to_s}'s known UA string" do
-        it 'with a matching string' do
-          crawler.matches?(crawler.ua_string).should == true
+        subject { crawler.matches?(user_agent) }
+        context "with a string containing '#{crawler.ua_string}'" do
+          let(:user_agent) { "Mozilla/5.0 #{crawler.ua_string}/1.1 (KHTML, like Gecko)" }
+          it { should be_true }
         end
 
-        it 'with a non-matching string' do
-          crawler.matches?('Commodo Vestibulum/1.0').should == false
+        context 'with a non-matching string' do
+          it { should be_false }
         end
       end
     end
