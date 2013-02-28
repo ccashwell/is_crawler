@@ -1,5 +1,5 @@
 # IsCrawler
-[![Code Climate](https://codeclimate.com/github/ccashwell/is_crawler.png)](https://codeclimate.com/github/ccashwell/is_crawler)
+[![Gem Version](https://badge.fury.io/rb/is_crawler.png)](http://badge.fury.io/rb/is_crawler) [![Code Climate](https://codeclimate.com/github/ccashwell/is_crawler.png)](https://codeclimate.com/github/ccashwell/is_crawler) [![Build Status](https://travis-ci.org/ccashwell/is_crawler.png?branch=master)](https://travis-ci.org/ccashwell/is_crawler)
 
 is\_crawler does exactly what you might think it does: determine if the supplied string matches a known crawler or bot.
 
