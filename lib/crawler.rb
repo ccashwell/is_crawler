@@ -1,15 +1,30 @@
 class Crawler < Struct.new(:name, :ua_string)
-  BING      = Crawler.new(:bing, "bingbot/2.0")
-  FACEBOOK  = Crawler.new(:facebook, "facebookexternalhit/1.1")
-  GOOGLE    = Crawler.new(:google, "Googlebot/2.1")
-  MSN       = Crawler.new(:msn, "MSNBot")
-  TWITTER   = Crawler.new(:twitter, "Twitterbot")
-  YAHOO     = Crawler.new(:yahoo, "Yahoo! Slurp")
+  class << self
+    def all
+      [
+        Crawler.new(:addthis, "AddThis.com"),
+        Crawler.new(:alexa, "ia_archiver"),
+        Crawler.new(:archive_org, "archive.org_bot"),
+        Crawler.new(:bing, "bingbot"),
+        Crawler.new(:bitly, "bitlybot"),
+        Crawler.new(:exabot, "Exabot"),
+        Crawler.new(:facebook, "facebookexternalhit"),
+        Crawler.new(:flipboard, "FlipboardProxy"),
+        Crawler.new(:google, "Googlebot"),
+        Crawler.new(:google_web_preview, "Google Web Preview"),
+        Crawler.new(:msn, "MSNBot"),
+        Crawler.new(:openwebspider, "OpenWebSpider"),
+        Crawler.new(:technorati, "Technoratibot"),
+        Crawler.new(:twitter, "Twitterbot"),
+        Crawler.new(:yahoo, "Yahoo! Slurp"),
+        Crawler.new(:yahoo_jp, "Y!J"),
+        Crawler.new(:yandex, "Yandex")
+      ]
+    end
 
-  ALL = [BING, FACEBOOK, GOOGLE, MSN, TWITTER, YAHOO]
-
-  def self.matches_any? user_agent
-    ALL.detect { |crawler| crawler.matches? user_agent } != nil
+    def matches_any? user_agent
+      all.detect { |crawler| crawler.matches? user_agent } != nil
+    end
   end
 
   def matches? user_agent

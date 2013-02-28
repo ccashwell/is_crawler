@@ -12,6 +12,6 @@ module IsCrawler
   end
 
   def which_crawler requesting_user_agent
-    Crawler::ALL.detect {|crawler| crawler.matches? requesting_user_agent }
+    Crawler.all.detect {|crawler| crawler.matches? requesting_user_agent }
   end
 end

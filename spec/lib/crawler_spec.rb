@@ -8,7 +8,7 @@ describe Crawler do
     end
 
     context 'When a known user agent is encountered' do
-      Crawler::ALL.each do |crawler|
+      Crawler.all.each do |crawler|
         context "such as the #{crawler.name.to_s} bot" do
           let(:user_agent) { "#{crawler.ua_string}" }
           it { should be_true }
@@ -18,7 +18,7 @@ describe Crawler do
   end
 
   describe '#matches?' do
-    Crawler::ALL.each do |crawler|
+    Crawler.all.each do |crawler|
       describe "Comparing #{crawler.name.to_s}'s known UA string" do
         it 'with a matching string' do
           crawler.matches?(crawler.ua_string).should == true
