@@ -1,25 +1,29 @@
 class Crawler < Struct.new(:name, :ua_string)
+  DEFAULT = [
+              Crawler.new(:addthis, "AddThis.com"),
+              Crawler.new(:alexa, "ia_archiver"),
+              Crawler.new(:archive_org, "archive.org_bot"),
+              Crawler.new(:bing, "bingbot"),
+              Crawler.new(:bitly, "bitlybot"),
+              Crawler.new(:exabot, "Exabot"),
+              Crawler.new(:facebook, "facebookexternalhit"),
+              Crawler.new(:flipboard, "FlipboardProxy"),
+              Crawler.new(:google, "Googlebot"),
+              Crawler.new(:google_web_preview, "Google Web Preview"),
+              Crawler.new(:msn, "MSNBot"),
+              Crawler.new(:openwebspider, "OpenWebSpider"),
+              Crawler.new(:technorati, "Technoratibot"),
+              Crawler.new(:twitter, "Twitterbot"),
+              Crawler.new(:yahoo, "Yahoo! Slurp"),
+              Crawler.new(:yahoo_jp, "Y!J"),
+              Crawler.new(:yandex, "Yandex")
+            ].freeze
+
+  CUSTOM = []
+
   class << self
     def all
-      [
-        Crawler.new(:addthis, "AddThis.com"),
-        Crawler.new(:alexa, "ia_archiver"),
-        Crawler.new(:archive_org, "archive.org_bot"),
-        Crawler.new(:bing, "bingbot"),
-        Crawler.new(:bitly, "bitlybot"),
-        Crawler.new(:exabot, "Exabot"),
-        Crawler.new(:facebook, "facebookexternalhit"),
-        Crawler.new(:flipboard, "FlipboardProxy"),
-        Crawler.new(:google, "Googlebot"),
-        Crawler.new(:google_web_preview, "Google Web Preview"),
-        Crawler.new(:msn, "MSNBot"),
-        Crawler.new(:openwebspider, "OpenWebSpider"),
-        Crawler.new(:technorati, "Technoratibot"),
-        Crawler.new(:twitter, "Twitterbot"),
-        Crawler.new(:yahoo, "Yahoo! Slurp"),
-        Crawler.new(:yahoo_jp, "Y!J"),
-        Crawler.new(:yandex, "Yandex")
-      ]
+      DEFAULT + CUSTOM
     end
 
     def matches_any? user_agent
