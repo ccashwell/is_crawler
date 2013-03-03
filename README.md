@@ -32,7 +32,9 @@ You can use the `is_crawler?` method with just a user agent string to determine 
       end
     end
 
-...or provide one or more crawlers to find out if the string matches *specific* crawlers: `is_crawler?("Some User Agent/1.0", :facebook, :google)`
+...or provide one or more crawlers to find out if the string matches *specific* crawlers: 
+
+    is_crawler?("Some User Agent/1.0", :facebook, :google)
 
 You can also define custom crawlers like this:
 
