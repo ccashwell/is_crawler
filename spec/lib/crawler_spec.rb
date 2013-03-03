@@ -1,5 +1,6 @@
 describe Crawler do
   let(:user_agent) { "Commodo Vestibulum/1.0" }
+
   describe '.matches_any?' do
     subject { Crawler.matches_any?(user_agent) }
 

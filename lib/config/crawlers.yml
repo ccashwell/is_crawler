@@ -1,0 +1,34 @@
+addthis:
+  ua_string: AddThis.com
+alexa:
+  ua_string: ia_archiver
+archive_org:
+  ua_string: archive.org_bot
+bing:
+  ua_string: bingbot
+bitly:
+  ua_string: bitlybot
+exabot:
+  ua_string: Exabot
+facebook:
+  ua_string: facebookexternalhit
+flipboard:
+  ua_string: FlipboardProxy
+google:
+  ua_string: Googlebot
+google_web_preview:
+  ua_string: Google Web Preview
+msn:
+  ua_string: MSNBot
+openwebspider:
+  ua_string: OpenWebSpider
+technorati:
+  ua_string: Technoratibot
+twitter:
+  ua_string: Twitterbot
+yahoo:
+  ua_string: Yahoo! Slurp
+yahoo_jp:
+  ua_string: Y!J
+yandex:
+  ua_string: Yandex
