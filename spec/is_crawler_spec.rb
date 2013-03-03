@@ -4,7 +4,7 @@ describe IsCrawler do
   describe '#is_crawler?' do
     context 'When specific crawlers are provided' do
       subject { Test.new.is_crawler?(user_agent, :facebook, :google) }
-      context 'When the provided string matches a crawler' do
+      context 'and the provided string matches a crawler' do
         context 'and it is in the specified list' do
           context 'as the first element' do
             let(:user_agent) { "facebookexternalhit/1.1" }
@@ -17,13 +17,13 @@ describe IsCrawler do
           end
         end
 
-        context 'and it is not in the specified list' do
+        context 'but it is not in the specified list' do
           let(:user_agent) { "Twitterbot/1.1" }
           it { should be_false }
         end
       end
 
-      context 'When the provided string matches no crawlers' do
+      context 'but the provided string matches no crawlers' do
         it { should be_false }
       end
     end
