@@ -32,4 +32,16 @@ describe Crawler do
       end
     end
   end
+
+  describe '#which_crawler' do
+    subject { Crawler.which_crawler(user_agent) }
+    context 'When the provided string matches a crawler' do
+      let(:user_agent) { "facebookexternalhit/1.1" }
+      it { should == :facebook }
+    end
+
+    context 'When the provided string matches no crawlers' do
+      it { should be_nil }
+    end
+  end
 end

@@ -25,6 +25,10 @@ class Crawler < Struct.new(:name, :ua_string)
     def matches_any? user_agent
       all.detect { |crawler| crawler.matches? user_agent } != nil
     end
+
+    def which_crawler user_agent
+      all.detect {|crawler| crawler.matches? user_agent }.name rescue nil
+    end
   end
 
   def matches? user_agent

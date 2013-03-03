@@ -19,7 +19,7 @@ Or install it yourself as:
 
 ## Usage
 
-You can use the `is_any_crawler?` method to determine if the given string, as you might have guessed, matches *any* (noteworthy) crawler, like so:
+You can use the `is_crawler?` method with just a user agent string to determine if the that string matches *any* (noteworthy) crawler, like so:
 
     class MyController < ActionController::Base
       include IsCrawler
@@ -32,7 +32,7 @@ You can use the `is_any_crawler?` method to determine if the given string, as yo
       end
     end
 
-...or the `is_crawler?("Some User Agent/1.0", :facebook, :google)` methods to determine if you're dealing with one or more specific crawlers. That's it!
+...or provide one or more crawlers `is_crawler?("Some User Agent/1.0", :facebook, :google)` to find out if the string matches one of those crawlers in specific. That's it!
 
 ## Contributing
 
