@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-You can use the `is_crawler?` method with just a user agent string to determine if the that string matches *any* known crawler, like so:
+You can use the `is_crawler?` method with just a user agent string to determine if it matches *any* crawler, like so:
 
     class MyController < ActionController::Base
       include IsCrawler
