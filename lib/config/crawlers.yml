@@ -1,34 +1,18 @@
-addthis:
-  ua_string: AddThis.com
-alexa:
-  ua_string: ia_archiver
-archive_org:
-  ua_string: archive.org_bot
-bing:
-  ua_string: bingbot
-bitly:
-  ua_string: bitlybot
-exabot:
-  ua_string: Exabot
-facebook:
-  ua_string: facebookexternalhit
-flipboard:
-  ua_string: FlipboardProxy
-google:
-  ua_string: Googlebot
-google_web_preview:
-  ua_string: Google Web Preview
-msn:
-  ua_string: MSNBot
-openwebspider:
-  ua_string: OpenWebSpider
-technorati:
-  ua_string: Technoratibot
-twitter:
-  ua_string: Twitterbot
-yahoo:
-  ua_string: Yahoo! Slurp
-yahoo_jp:
-  ua_string: Y!J
-yandex:
-  ua_string: Yandex
+crawlers:
+  addthis: AddThis.com
+  alexa: ia_archiver
+  archive_org: archive.org_bot
+  bing: bingbot
+  bitly: bitlybot
+  exabot: Exabot
+  facebook: facebookexternalhit
+  flipboard: FlipboardProxy
+  google: Googlebot
+  google_web_preview: Google Web Preview
+  msn: MSNBot
+  openwebspider: OpenWebSpider
+  technorati: Technoratibot
+  twitter: Twitterbot
+  yahoo: Yahoo! Slurp
+  yahoo_jp: Y!J
+  yandex: Yandex
