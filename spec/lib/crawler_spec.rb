@@ -1,62 +1,69 @@
 describe Crawler do
-  let(:user_agent) { "Commodo Vestibulum/1.0" }
+  let(:chrome_user_agent) { 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17' }
+  let(:google_user_agent) { 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' }
+  let(:facebook_user_agent) { 'facebookexternalhit/1.0 (http://www.facebook.com/externalhit_uatext.php)' }
 
   describe '.matches_any?' do
     subject { Crawler.matches_any?(user_agent) }
 
     context 'When an unknown user agent is encountered' do
+      let(:user_agent) { chrome_user_agent }
       it { should be_false }
     end
 
     context 'When a known user agent is encountered' do
-      Crawler.all.each do |crawler|
-        context "such as the #{crawler.name.to_s} bot" do
-          let(:user_agent) { "#{crawler.ua_string}" }
-          it { should be_true }
-        end
+      context 'such as the facebook crawler' do
+        let(:user_agent) { facebook_user_agent }
+        it { should be_true }
+      end
+
+      context 'such as the Googlebot' do
+        let(:user_agent) { google_user_agent }
+        it { should be_true }
       end
     end
   end
 
   describe '#matches?' do
-    Crawler.all.each do |crawler|
-      describe "Comparing #{crawler.name.to_s}'s known UA string" do
-        subject { crawler.matches?(user_agent) }
-        context "with a string containing '#{crawler.ua_string}'" do
-          let(:user_agent) { "Mozilla/5.0 #{crawler.ua_string}/1.1 (KHTML, like Gecko)" }
-          it { should be_true }
-        end
+    describe 'Comparing Googlebot\'s known UA string' do
+      subject { Crawler.new(:google, 'Googlebot').matches?(user_agent) }
+      context "with a matching string" do
+        let(:user_agent) { google_user_agent }
+        it { should be_true }
+      end
 
-        context 'with a non-matching string' do
-          it { should be_false }
-        end
+      context 'with a non-matching string' do
+        let(:user_agent) { chrome_user_agent }
+        it { should be_false }
       end
     end
   end
 
-  describe '#which_crawler' do
+  describe '.which_crawler' do
     subject { Crawler.which_crawler(user_agent) }
     context 'When the provided string matches a crawler' do
-      let(:user_agent) { "facebookexternalhit/1.1" }
+      let(:user_agent) { facebook_user_agent }
       it { should be :facebook }
     end
 
     context 'When the provided string matches no crawlers' do
+      let(:user_agent) { chrome_user_agent }
       it { should be_nil }
     end
   end
 
   describe 'Custom Crawler' do
     let(:custom_crawler) { Crawler.new(:custom, "Custom/1.0") }
+    let(:user_agent) { custom_crawler.ua_string }
     before { Crawler::CUSTOM << custom_crawler }
     context '.matches_any' do
       subject { Crawler.matches_any?(user_agent) }
       context 'When the provided string matches the custom crawler' do
-        let(:user_agent) { "Custom/1.0" }
         it { should be_true }
       end
 
       context 'When the provided string does not match the custom crawler' do
+        let(:user_agent) { chrome_user_agent }
         it { should be_false }
       end
     end
@@ -64,11 +71,11 @@ describe Crawler do
     context '.which_crawler' do
       subject { Crawler.which_crawler(user_agent) }
       context 'When the provided string matches the custom crawler' do
-        let(:user_agent) { "Custom/1.0" }
         it { should be custom_crawler.name }
       end
 
       context 'When the provided string does not match the custom crawler' do
+        let(:user_agent) { chrome_user_agent }
         it { should_not be custom_crawler.name }
       end
     end
@@ -76,11 +83,11 @@ describe Crawler do
     context '#matches?' do
       subject { custom_crawler.matches?(user_agent) }
       context 'When the provided string matches the custom crawler' do
-        let(:user_agent) { "Custom/1.0" }
         it { should be_true }
       end
 
       context 'When the provided string does not match the custom crawler' do
+        let(:user_agent) { chrome_user_agent }
         it { should be_false }
       end
     end

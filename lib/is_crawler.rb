@@ -6,7 +6,7 @@ module IsCrawler
     if specific_crawlers && specific_crawlers.size > 0
       specific_crawlers.include?(Crawler.which_crawler(requesting_user_agent))
     else
-      Crawler.matches_any?(requesting_user_agent) unless specific_crawlers.size > 0
+      Crawler.matches_any?(requesting_user_agent)
     end
   end
 end

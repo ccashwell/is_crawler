@@ -2,14 +2,18 @@ crawlers:
   addthis: AddThis.com
   alexa: ia_archiver
   archive_org: archive.org_bot
+  ask: Ask Jeeves
+  baidu: baidu
   bing: bingbot
   bitly: bitlybot
+  blekko: Blekkobot
   exabot: Exabot
   facebook: facebookexternalhit
   flipboard: FlipboardProxy
   google: Googlebot
   google_web_preview: Google Web Preview
   msn: MSNBot
+  mywebsearch: MyWebSearch
   openwebspider: OpenWebSpider
   technorati: Technoratibot
   twitter: Twitterbot

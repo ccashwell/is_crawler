@@ -1,7 +1,6 @@
-# IsCrawler
-[![Gem Version](https://badge.fury.io/rb/is_crawler.png)](http://badge.fury.io/rb/is_crawler) [![Code Climate](https://codeclimate.com/github/ccashwell/is_crawler.png)](https://codeclimate.com/github/ccashwell/is_crawler) [![Build Status](https://travis-ci.org/ccashwell/is_crawler.png?branch=master)](https://travis-ci.org/ccashwell/is_crawler)
+# is_crawler [![Gem Version](https://badge.fury.io/rb/is_crawler.png)](http://badge.fury.io/rb/is_crawler) [![Build Status](https://travis-ci.org/ccashwell/is_crawler.png?branch=master)](https://travis-ci.org/ccashwell/is_crawler) [![Code Climate](https://codeclimate.com/github/ccashwell/is_crawler.png)](https://codeclimate.com/github/ccashwell/is_crawler)
 
-is\_crawler does exactly what you might think it does: determine if the supplied string matches a known crawler or bot.
+This gem does one thing: determine if the supplied string matches a known crawler or bot. It matches against a very short list of strings found in the user agents that represent over 95% of crawler traffic. IMO, if it ain't detected, it ain't important.
 
 ## Installation
 
@@ -24,7 +23,7 @@ You can use the `is_crawler?` method with just a user agent string to determine 
     class MyController < ActionController::Base
       include IsCrawler
       def index
-        if is_any_crawler? request.env["HTTP_USER_AGENT"]
+        if is_crawler? request.env["HTTP_USER_AGENT"]
           render 'special_crawler_index'
         else
           render 'normal_boring_index'
@@ -38,7 +37,7 @@ You can use the `is_crawler?` method with just a user agent string to determine 
 
 You can also define custom crawlers like this:
 
-    Crawler::CUSTOM << Crawler.new(:custom_crawler_name, "string that is always present in crawler requests")
+    Crawler::CUSTOM << Crawler.new(:custom_crawler_name, "string that is always present in the crawler's user agent")
 
 That's it!
 
