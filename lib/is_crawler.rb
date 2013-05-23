@@ -9,4 +9,10 @@ module IsCrawler
       Crawler.matches_any?(requesting_user_agent)
     end
   end
+
+  Crawler.all.each do |crawler|
+    define_method "is_#{crawler.name.to_s}_crawler?" do |requesting_user_agent|
+      is_crawler? requesting_user_agent, crawler.name
+    end
+  end
 end

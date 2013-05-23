@@ -36,6 +36,16 @@ describe IsCrawler do
       end
     end
   end
+
+  Crawler.all.each do |crawler|
+    describe '#is_{some}_crawler' do
+      let(:crawler) { Crawler.all.first }
+      subject { Test.new.send("is_#{crawler.name}_crawler?", user_agent) }
+      it "provides method sugar for each crawler" do
+        subject.should == false
+      end
+    end
+  end
 end
 
 class Test; include IsCrawler; end

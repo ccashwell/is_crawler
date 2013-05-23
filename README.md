@@ -35,7 +35,11 @@ You can use the `is_crawler?` method with just a user agent string to determine 
 
     is_crawler?("Some User Agent/1.0", :facebook, :google)
 
-You can also define custom crawlers like this:
+...or you can use the method sugar:
+
+    is_facebook_crawler? request.env["HTTP_USER_AGENT"]
+
+...and you can add to the list of detectables:
 
     Crawler::CUSTOM << Crawler.new(:custom_crawler_name, "string that is always present in the crawler's user agent")
 
