@@ -1,7 +1,8 @@
-require './lib/is_crawler/version'
-require './lib/crawler'
+require 'crawler'
 
 module IsCrawler
+  VERSION = "0.1.5"
+
   def is_crawler? requesting_user_agent, *specific_crawlers
     if specific_crawlers && specific_crawlers.size > 0
       specific_crawlers.include?(Crawler.which_crawler(requesting_user_agent))
