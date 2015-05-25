@@ -8,18 +8,18 @@ describe Crawler do
 
     context 'When an unknown user agent is encountered' do
       let(:user_agent) { chrome_user_agent }
-      it { should be_false }
+      it { is_expected.to be false }
     end
 
     context 'When a known user agent is encountered' do
       context 'such as the facebook crawler' do
         let(:user_agent) { facebook_user_agent }
-        it { should be_true }
+        it { is_expected.to be true }
       end
 
       context 'such as the Googlebot' do
         let(:user_agent) { google_user_agent }
-        it { should be_true }
+        it { is_expected.to be true }
       end
     end
   end
@@ -29,12 +29,12 @@ describe Crawler do
       subject { Crawler.new(:google, 'Googlebot').matches?(user_agent) }
       context "with a matching string" do
         let(:user_agent) { google_user_agent }
-        it { should be_true }
+        it { is_expected.to be true }
       end
 
       context 'with a non-matching string' do
         let(:user_agent) { chrome_user_agent }
-        it { should be_false }
+        it { is_expected.to be false }
       end
     end
   end
@@ -43,12 +43,12 @@ describe Crawler do
     subject { Crawler.which_crawler(user_agent) }
     context 'When the provided string matches a crawler' do
       let(:user_agent) { facebook_user_agent }
-      it { should be :facebook }
+      it { is_expected.to be :facebook }
     end
 
     context 'When the provided string matches no crawlers' do
       let(:user_agent) { chrome_user_agent }
-      it { should be_nil }
+      it { is_expected.to be_nil }
     end
   end
 
@@ -59,36 +59,36 @@ describe Crawler do
     context '.matches_any' do
       subject { Crawler.matches_any?(user_agent) }
       context 'When the provided string matches the custom crawler' do
-        it { should be_true }
+        it { is_expected.to be true }
       end
 
       context 'When the provided string does not match the custom crawler' do
         let(:user_agent) { chrome_user_agent }
-        it { should be_false }
+        it { is_expected.to be false }
       end
     end
 
     context '.which_crawler' do
       subject { Crawler.which_crawler(user_agent) }
       context 'When the provided string matches the custom crawler' do
-        it { should be custom_crawler.name }
+        it { is_expected.to be custom_crawler.name }
       end
 
       context 'When the provided string does not match the custom crawler' do
         let(:user_agent) { chrome_user_agent }
-        it { should_not be custom_crawler.name }
+        it { is_expected.to_not be custom_crawler.name }
       end
     end
 
     context '#matches?' do
       subject { custom_crawler.matches?(user_agent) }
       context 'When the provided string matches the custom crawler' do
-        it { should be_true }
+        it { is_expected.to be true }
       end
 
       context 'When the provided string does not match the custom crawler' do
         let(:user_agent) { chrome_user_agent }
-        it { should be_false }
+        it { is_expected.to be false }
       end
     end
   end
