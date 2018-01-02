@@ -2,6 +2,7 @@ crawlers:
   addthis: AddThis.com
   alexa: ia_archiver
   archive_org: archive.org_bot
+  arefs: AhrefsBot
   ask: Ask Jeeves
   baidu: baidu
   bing: bingbot
@@ -12,9 +13,12 @@ crawlers:
   flipboard: FlipboardProxy
   google: Googlebot
   google_web_preview: Google Web Preview
+  mailru: Mail.RU_Bot
+  majestic12: MJ12bot
   msn: MSNBot
   mywebsearch: MyWebSearch
   openwebspider: OpenWebSpider
+  seznam: SeznamBot
   technorati: Technoratibot
   twitter: Twitterbot
   yahoo: Yahoo! Slurp
