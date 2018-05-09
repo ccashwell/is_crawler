@@ -5,9 +5,9 @@ This gem does one thing: determine if the supplied string matches a known crawle
 ## Installation
 
 Add this line to your application's Gemfile:
-
+```ruby
     gem 'is_crawler'
-
+```
 And then execute:
 
     $ bundle
@@ -19,7 +19,7 @@ Or install it yourself as:
 ## Usage
 
 You can use the `is_crawler?` method with just a user agent string to determine if it matches *any* crawler, like so:
-
+```ruby
     class MyController < ActionController::Base
       include IsCrawler
       def index
@@ -30,19 +30,19 @@ You can use the `is_crawler?` method with just a user agent string to determine 
         end
       end
     end
-
+```
 ...or provide one or more crawlers to find out if the string matches *specific* crawlers: 
-
+```ruby
     is_crawler?("Some User Agent/1.0", :facebook, :google)
-
+```
 ...or you can use the method sugar:
-
+```ruby
     is_facebook_crawler? request.env["HTTP_USER_AGENT"]
-
+````
 ...and you can add to the list of detectables:
-
+```ruby
     Crawler::CUSTOM << Crawler.new(:custom_crawler_name, "string that is always present in the crawler's user agent")
-
+```
 That's it!
 
 ## Contributing
